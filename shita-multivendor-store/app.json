@@ -34,7 +34,8 @@
     ],
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "web"
     ],
     "ios": {
       "supportsTablet": true,
@@ -67,11 +68,7 @@
         "backgroundColor": "#ffffff"
       }
     },
-    "extra": {
-      "eas": {
-        "projectId": "6a94161f-f21b-4ad9-8a04-c95b54ef0116"
-      }
-    },
+    "extra": {},
     "experiments": {
       "typedRoutes": true
     }
