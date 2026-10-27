@@ -36,6 +36,7 @@ export const typeDefs = `#graphql
     
     # Configuration
     getConfiguration: Configuration!
+    configuration: Configuration!
     getTaxation: Taxation!
     getTipping: Tipping!
     
@@ -56,7 +57,7 @@ export const typeDefs = `#graphql
     sendOtpToEmail(email: String!): SuccessMessage!
     sendOtpToPhoneNumber(phone: String!): SuccessMessage!
     verifyOtp(phone: String, email: String, otp: String!): SuccessMessage!
-    ownerLogin(email: String!, password: String!): AuthPayload!
+    ownerLogin(email: String!, password: String!): OwnerAuthPayload!
     
     # User Management
     pushToken(token: String!): SuccessMessage!
@@ -293,6 +294,35 @@ export const typeDefs = `#graphql
     twilioAccountSid: String
     twilioAuthToken: String
     twilioPhoneNumber: String
+    twilioEnabled: Boolean
+    skipWhatsAppOTP: Boolean
+    twilioWhatsAppNumber: String
+    formEmail: String
+    sendGridApiKey: String
+    sendGridEnabled: Boolean
+    sendGridEmail: String
+    sendGridEmailName: String
+    sendGridPassword: String
+    dashboardSentryUrl: String
+    webSentryUrl: String
+    apiSentryUrl: String
+    customerAppSentryUrl: String
+    restaurantAppSentryUrl: String
+    riderAppSentryUrl: String
+    googleApiKey: String
+    cloudinaryUploadUrl: String
+    cloudinaryApiKey: String
+    webAmplitudeApiKey: String
+    appAmplitudeApiKey: String
+    webClientID: String
+    androidClientID: String
+    iOSClientID: String
+    expoClientID: String
+    googleMapLibraries: String
+    googleColor: String
+    termsAndConditions: String
+    privacyPolicy: String
+    testOtp: String
     firebaseKey: String
     authDomain: String
     projectId: String
@@ -300,12 +330,10 @@ export const typeDefs = `#graphql
     msgSenderId: String
     appId: String
     measurementId: String
-    googleApiKey: String
     isPaidVersion: Boolean
     skipEmailVerification: Boolean
     skipPhoneVerification: Boolean
-    googleMapLibraries: String
-    googleColor: String
+    skipMobileVerification: Boolean
   }
 
   type Taxation {
@@ -401,6 +429,28 @@ export const typeDefs = `#graphql
   type AuthPayload {
     token: String!
     user: User!
+  }
+
+  type OwnerRestaurant {
+    _id: ID!
+    orderId: String
+    name: String
+    image: String
+    address: String
+  }
+
+  type OwnerAuthPayload {
+    userId: ID!
+    token: String!
+    email: String!
+    name: String
+    image: String
+    userType: String!
+    userTypeId: ID
+    restaurants: [OwnerRestaurant!]
+    permissions: [String!]
+    shopType: String
+    user: User
   }
 
   type SuccessMessage {

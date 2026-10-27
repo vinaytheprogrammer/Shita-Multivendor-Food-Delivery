@@ -181,7 +181,16 @@ export const authResolvers = {
       user.password = undefined;
 
       return {
+        userId: user._id.toString(),
         token,
+        email: user.email,
+        name: user.name,
+        userType: user.role,
+        userTypeId: user._id.toString(),
+        restaurants: [],
+        permissions: ['ALL'],
+        image: user.avatar || '',
+        shopType: 'RESTAURANT',
         user,
       };
     },
