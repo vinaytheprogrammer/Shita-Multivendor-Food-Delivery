@@ -18,7 +18,7 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "plugins": [
-    "expo-router",
+      "expo-router",
       [
         "@sentry/react-native/expo",
         {
@@ -40,7 +40,15 @@
           "supportsBackgroundPlayback": true,
           "supportsPictureInPicture": true
         }
-      ]
+      ],
+      "@react-native-community/datetimepicker",
+      "@sentry/react-native",
+      "expo-audio",
+      "expo-localization",
+      "expo-maps",
+      "expo-splash-screen",
+      "expo-status-bar",
+      "expo-web-browser"
     ],
     "platforms": [
       "ios",
